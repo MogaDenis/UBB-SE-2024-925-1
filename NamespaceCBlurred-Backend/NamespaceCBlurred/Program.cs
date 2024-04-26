@@ -16,6 +16,7 @@ builder.Services.AddDbContext<NamespaceCBlurredContext>(options =>
 
 // Here is the place where we do DI (Dependency Injection)
 
+
 //
 
 var app = builder.Build();
