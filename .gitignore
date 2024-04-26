@@ -3,8 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
-appsettings.json
-appsettings.Development.json
+NamespaceCBlurred-Backend/NamespaceCBlurred/appsettings.json
+NamespaceCBlurred-Backend/NamespaceCBlurred/appsettings.Development.json
 
 # User-specific files
 *.rsuser
