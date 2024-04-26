@@ -1,0 +1,6 @@
+@NamespaceCBlurred_HostAddress = http://localhost:5241
+
+GET {{NamespaceCBlurred_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
