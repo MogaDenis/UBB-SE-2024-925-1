@@ -8,6 +8,6 @@ namespace NamespaceCBlurred.Data.Repositories.Interfaces
         Task<IEnumerable<Sound>> GetAllSounds();
         Task<int> AddSound(Sound sound);
         Task<bool> DeleteSound(int soundId);
-        Task<bool> UpdateSound(int soundId, Sound sound);   
+        Task<bool> UpdateSound(int soundId, Sound sound);
     }
 }

@@ -8,38 +8,43 @@ namespace NamespaceCBlurred.Business.Services
 {
     public class SoundService : ISoundService
     {
-        private readonly ISoundRepository _soundRepository;
-        private readonly IMapper _mapper;
+        private readonly ISoundRepository soundRepository;
+        private readonly IMapper mapper;
 
         public SoundService(ISoundRepository soundRepository, IMapper mapper)
         {
-            _soundRepository = soundRepository ?? throw new ArgumentNullException(nameof(soundRepository));
-            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            this.soundRepository = soundRepository ?? throw new ArgumentNullException(nameof(soundRepository));
+            this.mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<int> AddSound(SoundForAddUpdateModel soundModel)
+        public async Task<Sound> AddSound(SoundForAddUpdateModel soundModel)
         {
-            return await _soundRepository.AddSound(_mapper.Map<Sound>(soundModel));
+            var sound = mapper.Map<Sound>(soundModel);
+
+            int id = await soundRepository.AddSound(sound);
+            sound.Id = id;
+
+            return sound;
         }
 
         public async Task<bool> DeleteSound(int soundId)
         {
-            return await _soundRepository.DeleteSound(soundId);
+            return await soundRepository.DeleteSound(soundId);
         }
 
-        public Task<IEnumerable<Sound>> GetAllSounds()
+        public async Task<IEnumerable<Sound>> GetAllSounds()
         {
-            throw new NotImplementedException();
+            return await soundRepository.GetAllSounds();
         }
 
-        public Task<Sound?> GetSoundById(int soundId)
+        public async Task<Sound?> GetSoundById(int soundId)
         {
-            throw new NotImplementedException();
+            return await soundRepository.GetSoundById(soundId);
         }
 
-        public Task<bool> UpdateSound(int soundId, SoundForAddUpdateModel soundModel)
+        public async Task<bool> UpdateSound(int soundId, SoundForAddUpdateModel soundModel)
         {
-            throw new NotImplementedException();
+            return await soundRepository.UpdateSound(soundId, mapper.Map<Sound>(soundModel));
         }
     }
 }

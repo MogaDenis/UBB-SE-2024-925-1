@@ -6,7 +6,7 @@
         INSTRUMENT,
         FX,
         VOICE
-    };
+    }
 
     public class Sound
     {

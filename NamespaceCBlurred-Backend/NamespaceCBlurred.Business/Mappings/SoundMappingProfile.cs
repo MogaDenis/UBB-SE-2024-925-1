@@ -6,7 +6,7 @@ namespace NamespaceCBlurred.Business.Mappings
 {
     public class SoundMappingProfile : Profile
     {
-        public SoundMappingProfile() 
+        public SoundMappingProfile()
         {
             CreateMap<Sound, SoundForAddUpdateModel>().ReverseMap();
         }
