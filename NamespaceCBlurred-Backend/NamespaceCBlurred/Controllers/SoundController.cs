@@ -56,7 +56,8 @@ namespace NamespaceCBlurred.Controllers
             {
                 var addedSound = await this.soundService.AddSound(soundModel);
 
-                return CreatedAtRoute("GetSound", addedSound);
+                return CreatedAtRoute(
+                    "GetSound", new { soundId = addedSound.Id }, addedSound);
             }
             catch (Exception ex)
             {
