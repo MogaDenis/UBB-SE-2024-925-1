@@ -4,17 +4,21 @@
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
-        public string Artist { get; set; }
+        public string Artist { get; set; } = string.Empty;
 
         public int Likes { get; set; }
 
         public int TimePlayed { get; set; }
 
-        public string UrlSong { get; set; }
+        public string UrlSong { get; set; } = string.Empty;
 
-        public string UrlImage { get; set; }
+        public string UrlImage { get; set; } = string.Empty;
+
+        public Song()
+        {
+        }
 
         public Song(int id, string name, string artist, string urlSong, string urlImage = "")
         {

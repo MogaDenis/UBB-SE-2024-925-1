@@ -30,6 +30,8 @@ namespace NamespaceCBlurred.Data.Repositories
             }
 
             context.Sounds.Remove(soundToRemove);
+            await context.SaveChangesAsync();
+
             return true;
         }
 
