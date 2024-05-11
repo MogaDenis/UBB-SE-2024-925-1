@@ -1,6 +1,11 @@
-using Microsoft.EntityFrameworkCore;
-using NamespaceCBlurred.Data.Models;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+using NamespaceCBlurred.Business.Mappings;
+using NamespaceCBlurred.Business.Services;
+using NamespaceCBlurred.Business.Services.Interfaces;
+using NamespaceCBlurred.Data.Models;
+using NamespaceCBlurred.Data.Repositories;
+using NamespaceCBlurred.Data.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +21,16 @@ builder.Services.AddDbContext<NamespaceCBlurredContext>(options =>
 
 // Here is the place where we do DI (Dependency Injection)
 
+// Inject automappers
+builder.Services.AddAutoMapper(typeof(SoundMappingProfile));
 
-//
+// Inject repositories
+builder.Services.AddScoped<ISoundRepository, SoundRepository>();
+
+// Inject services
+builder.Services.AddScoped<ISoundService, SoundService>();
+
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -49,6 +62,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapControllers();
 
 // Run
 app.Run();

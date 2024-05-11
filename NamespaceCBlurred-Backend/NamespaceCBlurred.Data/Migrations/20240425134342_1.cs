@@ -5,7 +5,7 @@
 namespace NamespaceCBlurred.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class _1 : Migration
+    public partial class FirstMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

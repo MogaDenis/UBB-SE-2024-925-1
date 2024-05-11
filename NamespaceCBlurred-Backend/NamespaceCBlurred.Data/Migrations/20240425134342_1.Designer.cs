@@ -12,7 +12,7 @@ namespace NamespaceCBlurred.Data.Migrations
 {
     [DbContext(typeof(NamespaceCBlurredContext))]
     [Migration("20240425134342_1")]
-    partial class _1
+    partial class FirstMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

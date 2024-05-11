@@ -4,10 +4,13 @@ namespace NamespaceCBlurred.Data.Models
 {
     public class NamespaceCBlurredContext : DbContext
     {
-        public NamespaceCBlurredContext() { }
+        public NamespaceCBlurredContext()
+        {
+        }
 
-        public NamespaceCBlurredContext(DbContextOptions<NamespaceCBlurredContext> options)
-            : base(options) { }
+        public NamespaceCBlurredContext(DbContextOptions<NamespaceCBlurredContext> options) : base(options)
+        {
+        }
 
         public virtual DbSet<Playlist> Playlists { get; set; }
 
