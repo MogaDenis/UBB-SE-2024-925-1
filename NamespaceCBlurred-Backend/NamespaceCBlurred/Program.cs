@@ -24,15 +24,18 @@ builder.Services.AddDbContext<NamespaceCBlurredContext>(options =>
 // Inject automappers
 builder.Services.AddAutoMapper(typeof(SoundMappingProfile));
 builder.Services.AddAutoMapper(typeof(SongMappingProfile));
+builder.Services.AddAutoMapper(typeof(PlaylistMappingProfile));
 
 // Inject repositories
 builder.Services.AddScoped<ISoundRepository, SoundRepository>();
 builder.Services.AddScoped<ISongRepository, SongRepository>();
+builder.Services.AddScoped<IPlaylistRepository, PlaylistRepository>();
 builder.Services.AddScoped<IPlaylistSongItemRepository, PlaylistSongItemRepository>();
 
 // Inject services
 builder.Services.AddScoped<ISoundService, SoundService>();
 builder.Services.AddScoped<ISongService, SongService>();
+builder.Services.AddScoped<IPlaylistService, PlaylistService>();
 builder.Services.AddScoped<IPlaylistSongItemService, PlaylistSongItemService>();
 
 builder.Services.AddControllers();
