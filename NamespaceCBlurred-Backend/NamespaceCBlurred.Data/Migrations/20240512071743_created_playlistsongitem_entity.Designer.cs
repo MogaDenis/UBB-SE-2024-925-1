@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NamespaceCBlurred.Data.Models;
 
@@ -10,9 +11,11 @@ using NamespaceCBlurred.Data.Models;
 namespace NamespaceCBlurred.Data.Migrations
 {
     [DbContext(typeof(NamespaceCBlurredContext))]
-    partial class NamespaceCBlurredContextModelSnapshot : ModelSnapshot
+    [Migration("20240512071743_created_playlistsongitem_entity")]
+    partial class Created_playlistsongitem_entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

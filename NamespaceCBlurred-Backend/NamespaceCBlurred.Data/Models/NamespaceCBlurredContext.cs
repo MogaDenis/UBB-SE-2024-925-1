@@ -19,5 +19,7 @@ namespace NamespaceCBlurred.Data.Models
         public virtual DbSet<Sound> Sounds { get; set; }
 
         public virtual DbSet<Song> Songs { get; set; }
+
+        public virtual DbSet<PlaylistSongItem> PlaylistSongItems { get; set; }
     }
 }

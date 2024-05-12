@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 using NamespaceCBlurred.Business.Models;
 using NamespaceCBlurred.Business.Services.Interfaces;
 
@@ -28,6 +29,10 @@ namespace NamespaceCBlurred.Controllers
 
                 return Ok(sound);
             }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
             catch (Exception ex)
             {
                 return StatusCode(500, "Internal server error: " + ex.Message);
@@ -42,6 +47,10 @@ namespace NamespaceCBlurred.Controllers
                 var sounds = await this.soundService.GetAllSounds();
 
                 return Ok(sounds);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
@@ -58,6 +67,10 @@ namespace NamespaceCBlurred.Controllers
 
                 return CreatedAtRoute(
                     "GetSound", new { soundId = addedSound.Id }, addedSound);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
@@ -78,6 +91,10 @@ namespace NamespaceCBlurred.Controllers
 
                 return NoContent();
             }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
             catch (Exception ex)
             {
                 return StatusCode(500, "Internal server error: " + ex.Message);
@@ -96,6 +113,10 @@ namespace NamespaceCBlurred.Controllers
                 }
 
                 return NoContent();
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
