@@ -21,7 +21,7 @@ namespace NamespaceCBlurred.Controllers
         {
             try
             {
-                var song = await this.songService.GetSongById(songId);
+                var song = await songService.GetSongById(songId);
                 if (song == null)
                 {
                     return NotFound();
@@ -44,7 +44,7 @@ namespace NamespaceCBlurred.Controllers
         {
             try
             {
-                var songs = await this.songService.GetAllSongs();
+                var songs = await songService.GetAllSongs();
 
                 return Ok(songs);
             }
@@ -63,7 +63,7 @@ namespace NamespaceCBlurred.Controllers
         {
             try
             {
-                var addedSong = await this.songService.AddSong(songModel);
+                var addedSong = await songService.AddSong(songModel);
 
                 return CreatedAtRoute(
                     "GetSong", new { songId = addedSong.Id }, addedSong);
@@ -83,7 +83,7 @@ namespace NamespaceCBlurred.Controllers
         {
             try
             {
-                var deleted = await this.songService.DeleteSong(songId);
+                var deleted = await songService.DeleteSong(songId);
                 if (!deleted)
                 {
                     return NotFound();
@@ -106,7 +106,7 @@ namespace NamespaceCBlurred.Controllers
         {
             try
             {
-                var updated = await this.songService.UpdateSong(songId, songModel);
+                var updated = await songService.UpdateSong(songId, songModel);
                 if (!updated)
                 {
                     return NotFound();

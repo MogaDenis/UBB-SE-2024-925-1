@@ -7,8 +7,8 @@ namespace NamespaceCBlurred.Data.Repositories.Interfaces
         Task<Playlist?> GetPlaylistById(int playlistId);
         Task<IEnumerable<Playlist>> GetAllPlaylists();
         Task<IEnumerable<Playlist>> GetAllPlaylistsOfUser(int userId);
-        Task<int> AddPlaylist(Playlist song);
-        Task<bool> DeletePlaylist(int songId);
-        Task<bool> UpdatePlaylist(int songId, Playlist song);
+        Task<int> AddPlaylist(Playlist playlist);
+        Task<bool> DeletePlaylist(int playlistId);
+        Task<bool> UpdatePlaylist(int playlistId, Playlist playlist);
     }
 }
