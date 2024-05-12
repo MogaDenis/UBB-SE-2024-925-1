@@ -28,10 +28,12 @@ builder.Services.AddAutoMapper(typeof(SongMappingProfile));
 // Inject repositories
 builder.Services.AddScoped<ISoundRepository, SoundRepository>();
 builder.Services.AddScoped<ISongRepository, SongRepository>();
+builder.Services.AddScoped<IPlaylistSongItemRepository, PlaylistSongItemRepository>();
 
 // Inject services
 builder.Services.AddScoped<ISoundService, SoundService>();
 builder.Services.AddScoped<ISongService, SongService>();
+builder.Services.AddScoped<IPlaylistSongItemService, PlaylistSongItemService>();
 
 builder.Services.AddControllers();
 
