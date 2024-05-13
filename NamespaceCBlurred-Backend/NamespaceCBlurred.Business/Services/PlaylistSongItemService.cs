@@ -8,14 +8,18 @@ namespace NamespaceCBlurred.Business.Services
     public class PlaylistSongItemService : IPlaylistSongItemService
     {
         private readonly IPlaylistSongItemRepository playlistSongItemRepository;
-        // private readonly IPlaylistService playlistService;
+        private readonly IPlaylistService playlistService;
         private readonly ISongService songService;
 
-        public PlaylistSongItemService(IPlaylistSongItemRepository playlistSongItemRepository, ISongService songService)
+        public PlaylistSongItemService(
+            IPlaylistSongItemRepository playlistSongItemRepository,
+            IPlaylistService playlistService,
+            ISongService songService)
         {
             this.playlistSongItemRepository = playlistSongItemRepository
                 ?? throw new ArgumentNullException(nameof(playlistSongItemRepository));
 
+            this.playlistService = playlistService ?? throw new ArgumentNullException(nameof(playlistService));
             this.songService = songService ?? throw new ArgumentNullException(nameof(songService));
         }
 
@@ -39,10 +43,10 @@ namespace NamespaceCBlurred.Business.Services
                 throw new ValidationException("Invalid playlist id provided.");
             }
 
-            // if (await playlistService.GetPlaylistById(playlistId) == null)
-            // {
-            //     throw new ArgumentException("The given playlist does not exist!");
-            // }
+            if (await playlistService.GetPlaylistById(playlistId) == null)
+            {
+                throw new ArgumentException("The given playlist does not exist!");
+            }
         }
 
         public async Task AddSongToPlaylist(int songId, int playlistId)
