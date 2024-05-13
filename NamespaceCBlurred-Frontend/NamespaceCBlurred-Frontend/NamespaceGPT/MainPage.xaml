@@ -45,9 +45,9 @@
 
 
             <StackLayout>
-                <ListView x:Name="tracksListView">
+                <ListView x:Name="SoundsListView">
                     <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="x:String">
+                        <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
                                     <Button Text="Delete" 
@@ -58,7 +58,7 @@
                                         HorizontalOptions="End"
                                         Margin="0, 0, 50, 0"
                                         />
-                                    <Label Text="{Binding}" VerticalOptions="Center" HorizontalOptions="Start" Margin="50, 0, 10, 0"/>
+                                    <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Start" Margin="50, 0, 10, 0"/>
 
                                 </StackLayout>
                             </ViewCell>

@@ -6,10 +6,10 @@
     <VerticalStackLayout>
         <ScrollView>
             <StackLayout Padding="10">
-                <SearchBar x:Name="SearchBar" Placeholder="Search for tracks" SearchButtonPressed="OnSearchButtonPressed" />
+                <SearchBar x:Name="SearchBar" Placeholder="Search for sounds" SearchButtonPressed="OnSearchButtonPressed" />
 
                 <StackLayout>
-                    <ListView x:Name="TracksListView" ItemTapped="OnTrackTapped" >
+                    <ListView x:Name="SoundsListView" ItemTapped="OnSoundTapped" >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -21,7 +21,7 @@
                                             Margin="0, 0, 50, 0"
                                             
                                             />
-                                        <Label Text="{Binding title}" VerticalOptions="Center" HorizontalOptions="Start" Margin="50, 0, 10, 0"/>
+                                        <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Start" Margin="50, 0, 10, 0"/>
 
                                     </StackLayout>
                                 </ViewCell>

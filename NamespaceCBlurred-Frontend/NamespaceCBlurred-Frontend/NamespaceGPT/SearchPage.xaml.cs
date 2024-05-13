@@ -1,18 +1,38 @@
+using NamespaceCBlurred_Frontend.Models;
+using NamespaceCBlurred_Frontend.Services;
+
 namespace NamespaceCBlurred_Frontend.NamespaceGPT
 {
     public partial class SearchPage : ContentPage
     {
+        private readonly SoundService soundService;
+        private readonly CreationService creationService;
+
         public SearchPage()
         {
             InitializeComponent();
+
+            soundService = Service.GetInstance().SoundService;
+            creationService = Service.GetInstance().CreationService;
         }
 
-        public void OnTrackTapped(object sender, ItemTappedEventArgs e)
+        protected override async void OnAppearing()
         {
-            // Track track = e.Item as Track;
-            // service.AddTrack(track);
-            // service.StopAll();
-            Shell.Current.GoToAsync("Main");
+            base.OnAppearing();
+
+            SoundsListView.ItemsSource = await soundService.GetAllSounds();
+        }
+
+        public async void OnSoundTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item is not Sound sound)
+            {
+                return;
+            }
+
+            await creationService.AddSoundToCreation(sound);
+
+            await Shell.Current.GoToAsync("Main");
         }
 
         public void OnPlayClicked(object sender, EventArgs e)
