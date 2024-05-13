@@ -6,6 +6,7 @@ namespace NamespaceCBlurred.Data.Repositories.Interfaces
     {
         Task<Sound?> GetSoundById(int soundId);
         Task<IEnumerable<Sound>> GetAllSounds();
+        Task<IEnumerable<Sound>> FilterSoundsByType(SoundType type);
         Task<int> AddSound(Sound sound);
         Task<bool> DeleteSound(int soundId);
         Task<bool> UpdateSound(int soundId, Sound sound);

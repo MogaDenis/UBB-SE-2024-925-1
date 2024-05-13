@@ -40,6 +40,11 @@ namespace NamespaceCBlurred.Data.Repositories
             return await context.Sounds.ToListAsync();
         }
 
+        public async Task<IEnumerable<Sound>> FilterSoundsByType(SoundType type)
+        {
+            return await context.Sounds.Where(sound => sound.Type == type).ToListAsync();   
+        }
+
         public async Task<Sound?> GetSoundById(int soundId)
         {
             return await context.Sounds.FirstOrDefaultAsync(sound => sound.Id == soundId);
