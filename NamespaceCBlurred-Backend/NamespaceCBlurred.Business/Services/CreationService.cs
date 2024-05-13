@@ -15,7 +15,7 @@ namespace NamespaceCBlurred.Business.Services
 
         public void AddSoundToCreation(Sound sound)
         {
-            if (creationRepository.GetAllSoundsOfCreation().FirstOrDefault(currentSound => currentSound.Id == sound.Id) != null)
+            if (creationRepository.CreationContainsSound(sound.Id))
             {
                 return;
             }
