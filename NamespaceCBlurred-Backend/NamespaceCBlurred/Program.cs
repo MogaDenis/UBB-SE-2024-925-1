@@ -31,12 +31,14 @@ builder.Services.AddScoped<ISoundRepository, SoundRepository>();
 builder.Services.AddScoped<ISongRepository, SongRepository>();
 builder.Services.AddScoped<IPlaylistRepository, PlaylistRepository>();
 builder.Services.AddScoped<IPlaylistSongItemRepository, PlaylistSongItemRepository>();
+builder.Services.AddSingleton<ICreationRepository, CreationRepository>();
 
 // Inject services
 builder.Services.AddScoped<ISoundService, SoundService>();
 builder.Services.AddScoped<ISongService, SongService>();
 builder.Services.AddScoped<IPlaylistService, PlaylistService>();
 builder.Services.AddScoped<IPlaylistSongItemService, PlaylistSongItemService>();
+builder.Services.AddScoped<ICreationService, CreationService>();
 
 builder.Services.AddControllers();
 
