@@ -69,13 +69,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="NamespaceGPT_Pages\DrumsPage.xaml.cs">
+	  <Compile Update="NamespaceGPT\DrumsPage.xaml.cs">
 	    <DependentUpon>DrumsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="NamespaceGPT_Pages\DrumsPage.xaml">
+	  <MauiXaml Update="LogInPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="NamespaceGPT\DrumsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="NamespaceGPT\SavePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="NamespaceGPT\SearchPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SignUpPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -1,4 +1,4 @@
-namespace NamespaceCBlurred_Frontend.NamespaceGPT_Pages
+namespace NamespaceCBlurred_Frontend
 {
     public partial class DrumsPage : ContentPage
     {
@@ -7,16 +7,14 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT_Pages
             InitializeComponent();
         }
 
-        private void OnNextClicked(object sender, EventArgs e)
+        private async void OnNextClicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            await Shell.Current.GoToAsync("Main");
         }
-
-        private void OnBackClicked(object sender, EventArgs e)
+        private async void OnBackClicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            await Shell.Current.GoToAsync("Main");
         }
-
         private void Drum1Clicked(object sender, EventArgs e)
         {
             throw new NotImplementedException();
