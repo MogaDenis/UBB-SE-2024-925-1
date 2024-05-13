@@ -3,13 +3,22 @@
     x:Class="NamespaceCBlurred_Frontend.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:NamespaceCBlurred_Frontend"
+    xmlns:local="clr-namespace:NamespaceCBlurred_Frontend"    
     Shell.FlyoutBehavior="Disabled"
     Title="NamespaceCBlurred_Frontend">
 
+    <FlyoutItem
+        Route="Main"
+    />
+
+    <FlyoutItem
+        Route="SignUp"
+    />
+
     <ShellContent
+        Shell.NavBarIsVisible="False"
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate local:LogInPage}"
+        Route="LogInPage" />
 
 </Shell>

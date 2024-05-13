@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NamespaceCBlurred_Frontend.LogInPage"
+             Title="LogInPage">
+    <ScrollView>
+        <StackLayout Padding="30,50,30,30" Spacing="20">
+            <Image Source="https://png.pngtree.com/png-clipart/20230917/original/pngtree-audio-wave-icon-in-pink-and-orange-vector-png-image_12273318.png" HeightRequest="250" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" />
+            <Label Text="Welcome Back!" FontSize="24" FontAttributes="Bold" TextColor="#333333" HorizontalOptions="Center" />
+
+
+            <Entry x:Name="UsernameEntry" Placeholder="Username" BackgroundColor="#FFFFFF" PlaceholderColor="#dfdfdd" TextColor="#000000" />
+
+            <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" BackgroundColor="#FFFFFF" PlaceholderColor="#dfdfdd" TextColor="#000000"/>
+
+
+            <Button x:Name="LoginButton" Text="Login" Clicked="OnLoginClicked" BackgroundColor="#007BFF" TextColor="White" />
+
+
+            <Label Text="Forgot your password?" TextColor="#007BFF" FontSize="14" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnForgotPasswordClicked" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <BoxView HeightRequest="1" BackgroundColor="#333333" HorizontalOptions="FillAndExpand" />
+
+
+            <Button x:Name="SignUpButton" Text="Sign Up" Clicked="OnSignUpClicked" BackgroundColor="#28A745" TextColor="White" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

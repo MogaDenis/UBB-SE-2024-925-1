@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NamespaceCBlurred_Frontend.NamespaceGPT.SavePage"
+             Title="SavePage">
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Padding="20">
+        <Label 
+            Text="Are you sure you want to save the changes?" 
+            HorizontalTextAlignment="Center" 
+            FontSize="24"
+            Margin="0,20,0,10"/>
+
+        <Entry x:Name="SaveTitleEntry" 
+            Placeholder="Enter title for your creation" 
+            BackgroundColor="#FFFFFF" 
+            PlaceholderColor="#dfdfdd" 
+            TextColor="#000000" />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button
+                Text="Yes"
+                Clicked="OnYesClicked"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                CornerRadius="10"
+                Margin="0,20,20,0" />
+
+            <Button
+                Text="No"
+                Clicked="OnNoClicked"
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                CornerRadius="10"
+                Margin="0,20,0,0" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
