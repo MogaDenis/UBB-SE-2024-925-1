@@ -59,6 +59,11 @@ namespace NamespaceCBlurred.Business.Services
             return await soundRepository.GetAllSounds();
         }
 
+        public async Task<IEnumerable<Sound>> FilterSoundsByType(SoundType type)
+        {
+            return await soundRepository.FilterSoundsByType(type);
+        }
+
         public async Task<Sound?> GetSoundById(int soundId)
         {
             if (soundId < 0)

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NamespaceCBlurred.Business.Models;
 using NamespaceCBlurred.Business.Services.Interfaces;
+using NamespaceCBlurred.Data.Models;
 
 namespace NamespaceCBlurred.Controllers
 {
@@ -45,6 +46,25 @@ namespace NamespaceCBlurred.Controllers
             try
             {
                 var sounds = await soundService.GetAllSounds();
+
+                return Ok(sounds);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+
+        [HttpGet("soundType/{type}")]
+        public async Task<IActionResult> FilterSoundsByType(SoundType type)
+        {
+            try
+            {
+                var sounds = await soundService.FilterSoundsByType(type);
 
                 return Ok(sounds);
             }
