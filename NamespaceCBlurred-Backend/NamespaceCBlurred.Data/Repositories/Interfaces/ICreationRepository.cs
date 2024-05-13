@@ -7,5 +7,6 @@ namespace NamespaceCBlurred.Data.Repositories.Interfaces
         void AddSoundToCreation(Sound sound);
         bool DeleteSoundFromCreation(int soundId);
         IEnumerable<Sound> GetAllSoundsOfCreation();
+        bool CreationContainsSound(int soundId);
     }
 }

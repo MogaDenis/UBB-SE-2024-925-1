@@ -34,5 +34,16 @@ namespace NamespaceCBlurred.Data.Repositories
 
             return true;
         }
+
+        public bool CreationContainsSound(int soundId)
+        {
+            var sound = sounds.FirstOrDefault(sound => sound.Id == soundId);
+            if (sound == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
