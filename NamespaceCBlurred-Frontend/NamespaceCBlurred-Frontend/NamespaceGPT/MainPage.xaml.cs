@@ -1,23 +1,33 @@
-﻿namespace NamespaceCBlurred_Frontend.NamespaceGPT
+﻿using NamespaceCBlurred_Frontend.Models;
+using NamespaceCBlurred_Frontend.Services;
+
+namespace NamespaceCBlurred_Frontend.NamespaceGPT
 {
     public partial class MainPage : ContentPage
     {
+        private readonly CreationService creationService;
+
         public MainPage()
         {
             InitializeComponent();
+
+            creationService = Service.GetInstance().CreationService;
         }
 
-        private void OnDeleteClicked(object sender, EventArgs e)
+        protected override async void OnAppearing()
         {
-            throw new NotImplementedException();
-            // if (sender is Button { CommandParameter: string item } && tracksListView.ItemsSource is List<string> items)
-            // {
-            //    items.Remove(item);
-            //    int trackId = auxList.Find(x => x.getTitle() == item).getId();
-            //    service.RemoveTrack(trackId);
-            //    tracksListView.ItemsSource = null;
-            //    tracksListView.ItemsSource = items;
-            // }
+            base.OnAppearing();
+
+            SoundsListView.ItemsSource = await creationService.GetAllSoundsOfCreation();
+        }
+
+        private async void OnDeleteClicked(object sender, EventArgs e)
+        {
+            if (sender is Button { CommandParameter: Sound item })
+            {
+                await creationService.DeleteSoundFromCreation(item.Id);
+                SoundsListView.ItemsSource = await creationService.GetAllSoundsOfCreation();
+            }
         }
 
         private async void GoFromMainToLogInPage(object sender, EventArgs e)
