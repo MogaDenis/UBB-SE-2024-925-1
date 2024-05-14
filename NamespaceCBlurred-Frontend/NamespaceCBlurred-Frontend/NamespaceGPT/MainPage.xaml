@@ -78,7 +78,7 @@
                 />
             </StackLayout>
             <Image Source="https://png.pngtree.com/png-clipart/20230917/original/pngtree-audio-wave-icon-in-pink-and-orange-vector-png-image_12273318.png"
-               HeightRequest="250"
+               HeightRequest="200"
                Aspect="AspectFit"
                HorizontalOptions="CenterAndExpand"
                Margin="0,20,0,20"/>
@@ -92,7 +92,9 @@
                     CornerRadius="30"
                     WidthRequest="120"
                     HeightRequest="50"
+                    Margin="10"
                     />
+
                 <Button
                     Text="Save"
                     Clicked="GoFromMainToSavePage"
@@ -101,9 +103,22 @@
                     CornerRadius="30"
                     WidthRequest="120"
                     HeightRequest="50"
+                    Margin="10"
+                    />
+
+                <Button
+                    x:Name="loadButton"
+                    Text="Load"
+                    Clicked="GoToLoadPage"
+                    BackgroundColor="#39D047"
+                    TextColor="White"
+                    CornerRadius="30"
+                    WidthRequest="120"
+                    HeightRequest="50"
+                    Margin="10"
                     />
             </StackLayout>
-            
+
             <Button Text="Back"
                 Clicked="GoFromMainToLogInPage"
                 BackgroundColor="#007AFF"

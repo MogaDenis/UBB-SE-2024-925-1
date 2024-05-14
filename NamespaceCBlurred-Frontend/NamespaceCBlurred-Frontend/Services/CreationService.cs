@@ -34,6 +34,24 @@ namespace NamespaceCBlurred_Frontend.Services
             return sounds;
         }
 
+        public async Task<IEnumerable<Creation>> GetAllCreations()
+        {
+            HttpResponseMessage response = await httpClient.GetAsync(apiBaseUrl + "Creation/allCreations");
+            if (!response.IsSuccessStatusCode)
+            {
+                return new List<Creation>();
+            }
+
+            string responseBody = await response.Content.ReadAsStringAsync();
+            var creations = JsonConvert.DeserializeObject<List<Creation>>(responseBody);
+            if (creations == null)
+            {
+                return new List<Creation>();
+            }
+
+            return creations;
+        }
+
         public async Task AddSoundToCreation(Sound sound)
         {
             var soundJson = JsonSerializer.Serialize(sound);
@@ -50,6 +68,11 @@ namespace NamespaceCBlurred_Frontend.Services
         public async Task SaveCreation(string title)
         {
             await httpClient.PostAsync(apiBaseUrl + "Creation/" + title, null);
+        }
+
+        public async Task LoadCreation(int creationId)
+        {
+            await httpClient.GetAsync(apiBaseUrl + "Creation/" + creationId);
         }
     }
 }

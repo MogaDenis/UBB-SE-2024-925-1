@@ -30,6 +30,36 @@ namespace NamespaceCBlurred.Controllers
             }
         }
 
+        [HttpGet("allCreations")]
+        public async Task<IActionResult> GetAllCreations()
+        {
+            try
+            {
+                var creations = await creationService.GetAllCreations();
+
+                return Ok(creations);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+
+        [HttpGet("{creationId}")]
+        public async Task<IActionResult> LoadCreation(int creationId)
+        {
+            try
+            {
+                await creationService.LoadCreation(creationId);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
+
         [HttpPost]
         public IActionResult AddSoundToCreation(Sound sound)
         {

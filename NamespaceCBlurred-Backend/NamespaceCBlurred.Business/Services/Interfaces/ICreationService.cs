@@ -8,5 +8,7 @@ namespace NamespaceCBlurred.Business.Services.Interfaces
         bool DeleteSoundFromCreation(int soundId);
         IEnumerable<Sound> GetAllSoundsOfCreation();
         Task SaveCreation(string title);
+        Task LoadCreation(int creationId);
+        Task<IEnumerable<Creation>> GetAllCreations();
     }
 }
