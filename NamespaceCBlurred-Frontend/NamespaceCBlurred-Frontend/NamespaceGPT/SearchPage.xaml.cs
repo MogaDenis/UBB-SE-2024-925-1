@@ -37,6 +37,7 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
             }
 
             await creationService.AddSoundToCreation(sound);
+            audioService.StopAllSounds();
 
             await Shell.Current.GoToAsync("Main");
         }

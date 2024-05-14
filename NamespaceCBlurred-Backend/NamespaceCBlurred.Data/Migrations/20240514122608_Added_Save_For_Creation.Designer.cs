@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NamespaceCBlurred.Data.Models;
 
@@ -10,9 +11,11 @@ using NamespaceCBlurred.Data.Models;
 namespace NamespaceCBlurred.Data.Migrations
 {
     [DbContext(typeof(NamespaceCBlurredContext))]
-    partial class NamespaceCBlurredContextModelSnapshot : ModelSnapshot
+    [Migration("20240514122608_Added_Save_For_Creation")]
+    partial class Added_Save_For_Creation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -46,5 +46,10 @@ namespace NamespaceCBlurred_Frontend.Services
         {
             await httpClient.DeleteAsync(apiBaseUrl + "Creation/" + soundId);
         }
+
+        public async Task SaveCreation(string title)
+        {
+            await httpClient.PostAsync(apiBaseUrl + "Creation/" + title, null);
+        }
     }
 }

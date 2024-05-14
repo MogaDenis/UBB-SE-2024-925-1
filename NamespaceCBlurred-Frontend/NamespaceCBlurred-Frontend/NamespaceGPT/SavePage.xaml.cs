@@ -1,29 +1,34 @@
+using NamespaceCBlurred_Frontend.Services;
+
 namespace NamespaceCBlurred_Frontend.NamespaceGPT
 {
     public partial class SavePage : ContentPage
     {
+        private readonly CreationService creationService;
+
         public SavePage()
         {
             InitializeComponent();
+
+            creationService = Service.GetInstance().CreationService;
         }
 
-        private void OnYesClicked(object sender, EventArgs e)
+        private async void OnYesClicked(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(SaveTitleEntry.Text))
             {
-                DisplayAlert("Empty title!", "Please enter a title!", "OK");
+                await DisplayAlert("Empty title!", "Please enter a title!", "OK");
                 return;
             }
-            DisplayAlert("Your masterpiece has been saved!", "We are waiting for your creative mastermind to blossom once again", "OK");
-            // service.SaveCreation(SaveTitleEntry.Text);
-            Shell.Current.GoToAsync("Main");
+            await DisplayAlert("Your masterpiece has been saved!", "We are waiting for your creative mastermind to blossom once again", "OK");
+
+            await creationService.SaveCreation(SaveTitleEntry.Text);
+            await Shell.Current.GoToAsync("Main");
         }
 
-        private void OnNoClicked(object sender, EventArgs e)
+        private async void OnNoClicked(object sender, EventArgs e)
         {
-            // Handle cancel action
-            // Navigate back to the main page OR exit without saving
-            Shell.Current.GoToAsync("Main");
+            await Shell.Current.GoToAsync("Main");
         }
     }
 }

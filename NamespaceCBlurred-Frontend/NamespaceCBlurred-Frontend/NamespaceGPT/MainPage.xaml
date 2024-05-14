@@ -82,27 +82,28 @@
                Aspect="AspectFit"
                HorizontalOptions="CenterAndExpand"
                Margin="0,20,0,20"/>
-            <Button
-            x:Name="playButton"
-            Text="Play/Stop"
-            Clicked="PlayCreation"
-            BackgroundColor="#39D047"
-            TextColor="White"
-            CornerRadius="30"
-            WidthRequest="120"
-            HeightRequest="50"
-            />
-            <Button
-            Text="Save"
-            Clicked="GoFromMainToSavePage"
-            BackgroundColor="#007AFF"
-            TextColor="White"
-            CornerRadius="30"
-            WidthRequest="120"
-            HeightRequest="50"
-            />
-
-            <!--Butonul asta e doar ca sa pot eu merge inapoi-->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button
+                    x:Name="playButton"
+                    Text="Play/Stop"
+                    Clicked="PlayCreation"
+                    BackgroundColor="#39D047"
+                    TextColor="White"
+                    CornerRadius="30"
+                    WidthRequest="120"
+                    HeightRequest="50"
+                    />
+                <Button
+                    Text="Save"
+                    Clicked="GoFromMainToSavePage"
+                    BackgroundColor="#007AFF"
+                    TextColor="White"
+                    CornerRadius="30"
+                    WidthRequest="120"
+                    HeightRequest="50"
+                    />
+            </StackLayout>
+            
             <Button Text="Back"
                 Clicked="GoFromMainToLogInPage"
                 BackgroundColor="#007AFF"
@@ -110,7 +111,6 @@
                 CornerRadius="10"
                 WidthRequest="80"
                 HeightRequest="40"/>
-
         </StackLayout>
     </ScrollView>
 </ContentPage>

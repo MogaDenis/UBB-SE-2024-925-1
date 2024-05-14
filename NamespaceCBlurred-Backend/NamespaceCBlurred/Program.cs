@@ -17,7 +17,7 @@ builder.Services.AddCors();
 
 // Change the connection string in appsettings.json.
 builder.Services.AddDbContext<NamespaceCBlurredContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection")), ServiceLifetime.Singleton);
 
 // Here is the place where we do DI (Dependency Injection)
 

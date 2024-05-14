@@ -42,7 +42,7 @@ namespace NamespaceCBlurred.Data.Repositories
 
         public async Task<IEnumerable<Sound>> FilterSoundsByType(SoundType type)
         {
-            return await context.Sounds.Where(sound => sound.Type == type).ToListAsync();   
+            return await context.Sounds.Where(sound => sound.Type == type).ToListAsync();
         }
 
         public async Task<Sound?> GetSoundById(int soundId)
