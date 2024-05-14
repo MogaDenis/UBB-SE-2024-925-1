@@ -14,6 +14,7 @@ namespace NamespaceCBlurred_Frontend
             Routing.RegisterRoute("ForgotPassword", typeof(ForgotPasswordPage));
             Routing.RegisterRoute("Search", typeof(SearchPage));
             Routing.RegisterRoute("Save", typeof(SavePage));
+            Routing.RegisterRoute("Load", typeof(LoadPage));
         }
     }
 }

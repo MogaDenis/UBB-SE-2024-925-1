@@ -37,8 +37,8 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
             }
 
             await creationService.AddSoundToCreation(sound);
-            audioService.StopAllSounds();
 
+            audioService.StopAllSounds();
             await Shell.Current.GoToAsync("Main");
         }
 
@@ -57,7 +57,6 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
         public async void GoFromSearchToMainPage(object sender, EventArgs e)
         {
             audioService.StopAllSounds();
-
             await Shell.Current.GoToAsync("Main");
         }
 

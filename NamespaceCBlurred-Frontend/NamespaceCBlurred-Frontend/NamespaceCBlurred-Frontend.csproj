@@ -170,6 +170,9 @@
 	  <MauiXaml Update="NamespaceGPT\DrumsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="NamespaceGPT\LoadPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="NamespaceGPT\SavePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

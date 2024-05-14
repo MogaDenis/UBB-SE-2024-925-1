@@ -5,7 +5,7 @@
              Title="LogInPage">
     <ScrollView>
         <StackLayout Padding="30,50,30,30" Spacing="20">
-            <Image Source="https://png.pngtree.com/png-clipart/20230917/original/pngtree-audio-wave-icon-in-pink-and-orange-vector-png-image_12273318.png" HeightRequest="250" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" />
+            <Image Source="https://png.pngtree.com/png-clipart/20230917/original/pngtree-audio-wave-icon-in-pink-and-orange-vector-png-image_12273318.png" HeightRequest="200" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" />
             <Label Text="Welcome Back!" FontSize="24" FontAttributes="Bold" TextColor="#333333" HorizontalOptions="Center" />
 
 

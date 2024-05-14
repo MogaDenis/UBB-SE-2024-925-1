@@ -9,5 +9,7 @@ namespace NamespaceCBlurred.Data.Repositories.Interfaces
         IEnumerable<Sound> GetAllSoundsOfCreation();
         bool CreationContainsSound(int soundId);
         Task SaveCreation(string title);
+        Task LoadCreation(int creationId);
+        Task<IEnumerable<Creation>> GetAllCreations();
     }
 }

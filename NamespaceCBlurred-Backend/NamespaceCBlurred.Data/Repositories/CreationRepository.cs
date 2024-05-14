@@ -1,4 +1,5 @@
-﻿using NamespaceCBlurred.Data.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using NamespaceCBlurred.Data.Models;
 using NamespaceCBlurred.Data.Repositories.Interfaces;
 
 namespace NamespaceCBlurred.Data.Repositories
@@ -6,7 +7,7 @@ namespace NamespaceCBlurred.Data.Repositories
     public class CreationRepository : ICreationRepository
     {
         private readonly NamespaceCBlurredContext context;
-        private readonly List<Sound> sounds;
+        private List<Sound> sounds;
 
         public CreationRepository(NamespaceCBlurredContext context)
         {
@@ -75,6 +76,35 @@ namespace NamespaceCBlurred.Data.Repositories
 
             await context.CreationSoundItems.AddRangeAsync(soundItems);
             await context.SaveChangesAsync();
+        }
+
+        public async Task LoadCreation(int creationId)
+        {
+            var creation = await context.Creations.FirstOrDefaultAsync(creation => creation.Id == creationId);
+            if (creation == null)
+            {
+                return;
+            }
+
+            var sounds = new List<Sound>();
+            var soundIds = await context.CreationSoundItems.Where(creationSoundItem => creationSoundItem.CreationId == creationId)
+                .Select(creationSoundItem => creationSoundItem.SoundId).ToListAsync();
+
+            foreach (int soundId in soundIds)
+            {
+                var sound = await context.Sounds.FirstOrDefaultAsync(currentSound => currentSound.Id == soundId);
+                if (sound != null)
+                {
+                    sounds.Add(sound);
+                }
+            }
+
+            this.sounds = sounds;
+        }
+
+        public async Task<IEnumerable<Creation>> GetAllCreations()
+        {
+            return await context.Creations.ToListAsync();
         }
     }
 }

@@ -37,5 +37,15 @@ namespace NamespaceCBlurred.Business.Services
         {
             await creationRepository.SaveCreation(title);
         }
+
+        public async Task LoadCreation(int creationId)
+        {
+            await creationRepository.LoadCreation(creationId);
+        }
+
+        public async Task<IEnumerable<Creation>> GetAllCreations()
+        {
+            return await creationRepository.GetAllCreations();
+        }
     }
 }

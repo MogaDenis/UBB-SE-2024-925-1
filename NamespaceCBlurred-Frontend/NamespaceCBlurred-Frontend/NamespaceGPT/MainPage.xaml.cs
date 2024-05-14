@@ -35,7 +35,14 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
 
         private async void GoFromMainToLogInPage(object sender, EventArgs e)
         {
+            audioService.StopAllSounds();
             await Shell.Current.GoToAsync("LogIn");
+        }
+
+        private async void GoToLoadPage(object sender, EventArgs e)
+        {
+            audioService.StopAllSounds();
+            await Shell.Current.GoToAsync("Load");
         }
 
         private void GoToListenTrack(object sender, EventArgs e)
@@ -55,6 +62,8 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
             }
 
             Service.GetInstance().SelectedSoundType = type;
+
+            audioService.StopAllSounds();
             await Shell.Current.GoToAsync("Search");
         }
 
