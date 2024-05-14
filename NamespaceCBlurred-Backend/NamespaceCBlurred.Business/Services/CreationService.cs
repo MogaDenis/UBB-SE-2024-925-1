@@ -32,5 +32,10 @@ namespace NamespaceCBlurred.Business.Services
         {
             return creationRepository.DeleteSoundFromCreation(soundId);
         }
+
+        public async Task SaveCreation(string title)
+        {
+            await creationRepository.SaveCreation(title);
+        }
     }
 }

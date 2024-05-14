@@ -64,5 +64,20 @@ namespace NamespaceCBlurred.Controllers
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
+
+        [HttpPost("{title}")]
+        public async Task<IActionResult> SaveCreation(string title)
+        {
+            try
+            {
+                await creationService.SaveCreation(title);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error: " + ex.Message);
+            }
+        }
     }
 }

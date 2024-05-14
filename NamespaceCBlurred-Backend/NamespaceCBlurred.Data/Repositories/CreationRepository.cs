@@ -5,10 +5,12 @@ namespace NamespaceCBlurred.Data.Repositories
 {
     public class CreationRepository : ICreationRepository
     {
+        private readonly NamespaceCBlurredContext context;
         private readonly List<Sound> sounds;
 
-        public CreationRepository()
+        public CreationRepository(NamespaceCBlurredContext context)
         {
+            this.context = context ?? throw new ArgumentNullException(nameof(context));
             sounds = new List<Sound>();
         }
 
@@ -44,6 +46,35 @@ namespace NamespaceCBlurred.Data.Repositories
             }
 
             return true;
+        }
+
+        public async Task SaveCreation(string title)
+        {
+            Creation newCreation = new ()
+            {
+                Title = title,
+            };
+
+            await context.Creations.AddAsync(newCreation);
+            await context.SaveChangesAsync();
+
+            int creationId = newCreation.Id;
+
+            List<CreationSoundItem> soundItems = new List<CreationSoundItem>();
+
+            foreach (Sound sound in sounds)
+            {
+                CreationSoundItem newItem = new ()
+                {
+                    CreationId = creationId,
+                    SoundId = sound.Id,
+                };
+
+                soundItems.Add(newItem);
+            }
+
+            await context.CreationSoundItems.AddRangeAsync(soundItems);
+            await context.SaveChangesAsync();
         }
     }
 }
