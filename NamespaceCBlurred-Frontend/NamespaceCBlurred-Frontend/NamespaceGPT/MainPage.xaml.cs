@@ -6,12 +6,15 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
     public partial class MainPage : ContentPage
     {
         private readonly CreationService creationService;
+        private readonly AudioService audioService;
+        private bool isButtonClicked = false;
 
         public MainPage()
         {
             InitializeComponent();
 
             creationService = Service.GetInstance().CreationService;
+            audioService = Service.GetInstance().AudioService;
         }
 
         protected override async void OnAppearing()
@@ -42,36 +45,45 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
 
         private async void GoToSearchTracks(object sender, EventArgs e)
         {
-            // Button button = (Button)sender;
-            // string category = button.Text.ToLower();
-            // service.category = category;
+            Button button = (Button)sender;
+            string category = button.Text.ToUpper();
+
+            bool parsedEnum = Enum.TryParse(category, out SoundType type);
+            if (!parsedEnum)
+            {
+                return;
+            }
+
+            Service.GetInstance().SelectedSoundType = type;
             await Shell.Current.GoToAsync("Search");
         }
 
         private async void GoFromMainToSavePage(object sender, EventArgs e)
         {
-            // if (service.GetCreationTracks().Count == 0)
-            // {
-            //    DisplayAlert("Empty creation!", "Please select at least one track!", "OK");
-            //    return;
-            // }
+            if ((await creationService.GetAllSoundsOfCreation()).ToList().Count == 0)
+            {
+                await DisplayAlert("Empty creation!", "Please select at least one track!", "OK");
+                return;
+            }
             await Shell.Current.GoToAsync("Save");
         }
 
-        private void PlayCreation(object sender, EventArgs e)
+        private async void PlayCreation(object sender, EventArgs e)
         {
-            // if (!isButtonClicked && service.GetCreationTracks().Count() != 0)
-            // {
-            //    playButton.BackgroundColor = Color.FromRgb(255, 0, 0);
-            //    isButtonClicked = true;
-            //    service.PlayCreation();
-            // }
-            // else
-            // {
-            //    playButton.BackgroundColor = Color.FromRgb(57, 208, 71);
-            //    isButtonClicked = false;
-            //    service.StopCreation();
-            // }
+            var creationSounds = (await creationService.GetAllSoundsOfCreation()).ToList();
+
+            if (!isButtonClicked && creationSounds.Count != 0)
+            {
+                playButton.BackgroundColor = Color.FromRgb(255, 0, 0);
+                isButtonClicked = true;
+                audioService.PlaySounds(creationSounds);
+            }
+            else
+            {
+                playButton.BackgroundColor = Color.FromRgb(57, 208, 71);
+                isButtonClicked = false;
+                audioService.StopAllSounds();
+            }
         }
     }
 }
