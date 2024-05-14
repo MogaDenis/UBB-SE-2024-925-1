@@ -18,7 +18,7 @@
                     HeightRequest="40"/>
 
                 <Button 
-                    Text="Music"
+                    Text="Instrument"
                     Clicked="GoToSearchTracks"
                     BackgroundColor="#007AFF"
                     TextColor="White"
@@ -34,7 +34,7 @@
                     WidthRequest="80"
                     HeightRequest="40"/>
 
-                <Button Text="Mic"
+                <Button Text="Voice"
                     Clicked="GoToSearchTracks"
                     BackgroundColor="#007AFF"
                     TextColor="White"

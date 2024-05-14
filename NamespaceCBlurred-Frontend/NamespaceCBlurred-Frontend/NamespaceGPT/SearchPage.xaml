@@ -3,34 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NamespaceCBlurred_Frontend.NamespaceGPT.SearchPage"
              Title="SearchPage">
-    <VerticalStackLayout>
-        <ScrollView>
-            <StackLayout Padding="10">
-                <SearchBar x:Name="SearchBar" Placeholder="Search for sounds" SearchButtonPressed="OnSearchButtonPressed" />
-
-                <StackLayout>
-                    <ListView x:Name="SoundsListView" ItemTapped="OnSoundTapped" >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Button Text="Play" 
-                                            CommandParameter="{Binding id}"
+    <ScrollView>
+        <StackLayout Padding="10">
+            <SearchBar x:Name="SearchBar" Placeholder="Search for sounds" SearchButtonPressed="OnSearchButtonPressed" />
+            <StackLayout>
+                <ListView x:Name="SoundsListView" ItemTapped="OnSoundTapped" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Button Text="Play" 
+                                            CommandParameter="{Binding Id}"
                                             Clicked="OnPlayClicked"
                                             HorizontalOptions="End" 
                                             Margin="0, 0, 50, 0"
                                             
                                             />
-                                        <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Start" Margin="50, 0, 10, 0"/>
+                                    <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Start" Margin="50, 0, 10, 0"/>
 
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-
-                    </ListView>
-                </StackLayout>
-                <Button Text="Back"
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Button Text="Back"
                     Clicked="GoFromSearchToMainPage"
                     BackgroundColor="#007AFF"
                     TextColor="White"
@@ -38,10 +35,8 @@
                     WidthRequest="80"
                     HeightRequest="40"/>
 
-                <StackLayout x:Name="ButtonsLayout">
-                </StackLayout>
-
+            <StackLayout x:Name="ButtonsLayout">
             </StackLayout>
-        </ScrollView>
-    </VerticalStackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

@@ -7,6 +7,9 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
     {
         private readonly SoundService soundService;
         private readonly CreationService creationService;
+        private readonly AudioService audioService;
+
+        private readonly SoundType selectedSoundType;
 
         public SearchPage()
         {
@@ -14,13 +17,16 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
 
             soundService = Service.GetInstance().SoundService;
             creationService = Service.GetInstance().CreationService;
+            audioService = Service.GetInstance().AudioService;
+
+            selectedSoundType = Service.GetInstance().SelectedSoundType;
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            SoundsListView.ItemsSource = await soundService.GetAllSounds();
+            SoundsListView.ItemsSource = await soundService.FilterSoundsByType(selectedSoundType);
         }
 
         public async void OnSoundTapped(object sender, ItemTappedEventArgs e)
@@ -35,52 +41,36 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
             await Shell.Current.GoToAsync("Main");
         }
 
-        public void OnPlayClicked(object sender, EventArgs e)
+        public async void OnPlayClicked(object sender, EventArgs e)
         {
-            // TO DO
-            // PLAY THE TRACK
-            // service.StopAll();
-            // int id = (int)((Button)sender).CommandParameter;
-            // Track track = service.GetTrackById(id);
-            // track.Play();
+            int id = (int)((Button)sender).CommandParameter;
+            Sound? sound = await soundService.GetSoundById(id);
+            if (sound == null)
+            {
+                return;
+            }
+
+            audioService.PlayIndividualSound(sound);
         }
 
         public async void GoFromSearchToMainPage(object sender, EventArgs e)
         {
-            // service.StopAll();
+            audioService.StopAllSounds();
+
             await Shell.Current.GoToAsync("Main");
         }
 
-        // Method to create dynamic buttons for sentences containing the search query
-        /*private void CreateButtons(string searchQuery)
-        {
-            ButtonsLayout.Children.Clear(); // Clear existing buttons
-
-            foreach (Track track in tracksData)
-            {
-                string title = track.getTitle();
-                if (title.ToLower().Contains(searchQuery.ToLower()))
-                {
-                    var button = new Button { Text = title };
-                    button.Clicked += Button_Clicked; // Add event handler for button click
-                    ButtonsLayout.Children.Add(button);
-
-                }
-            }
-        }
-        */
-        // Event handler for the search bar's search button pressed event
-        private void OnSearchButtonPressed(object sender, EventArgs e)
+        private async void OnSearchButtonPressed(object sender, EventArgs e)
         {
             string searchQuery = SearchBar.Text;
             if (string.IsNullOrWhiteSpace(searchQuery))
             {
-                // TracksListView.ItemsSource = service.GetTracksByType(categoryInt);
+                SoundsListView.ItemsSource = await soundService.FilterSoundsByType(selectedSoundType);
             }
             else
             {
-                // TracksListView.ItemsSource = service.GetTracksByType(categoryInt).
-                //    FindAll(x => x.getTitle().ToLower().Contains(searchQuery.ToLower()));
+                SoundsListView.ItemsSource = (await soundService.FilterSoundsByType(selectedSoundType))
+                   .Where(x => x.Name.Contains(searchQuery, StringComparison.CurrentCultureIgnoreCase));
             }
         }
     }

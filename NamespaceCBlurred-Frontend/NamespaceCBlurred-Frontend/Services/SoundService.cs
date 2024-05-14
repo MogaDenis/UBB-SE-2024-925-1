@@ -48,7 +48,7 @@ namespace NamespaceCBlurred_Frontend.Services
 
         public async Task<IEnumerable<Sound>> FilterSoundsByType(SoundType type)
         {
-            HttpResponseMessage response = await httpClient.GetAsync(apiBaseUrl + "Sounds/" + type);
+            HttpResponseMessage response = await httpClient.GetAsync(apiBaseUrl + "Sounds/soundType/" + (int)type);
             if (!response.IsSuccessStatusCode)
             {
                 return new List<Sound>();
