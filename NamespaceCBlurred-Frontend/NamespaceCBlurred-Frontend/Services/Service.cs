@@ -6,6 +6,7 @@ namespace NamespaceCBlurred_Frontend.Services
     public class Service
     {
         public SongService SongService { get; }
+        public PlaylistService PlaylistService { get; }
         public SoundService SoundService { get; }
         public CreationService CreationService { get; }
 
@@ -21,6 +22,7 @@ namespace NamespaceCBlurred_Frontend.Services
             SoundService = new (apiBaseUrl);
             SongService = new (apiBaseUrl);
             CreationService = new (apiBaseUrl);
+            PlaylistService = new (apiBaseUrl);
             AudioService = new ();
         }
 
