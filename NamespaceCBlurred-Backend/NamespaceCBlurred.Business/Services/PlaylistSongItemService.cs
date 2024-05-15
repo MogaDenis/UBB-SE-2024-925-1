@@ -54,6 +54,15 @@ namespace NamespaceCBlurred.Business.Services
             await ValidateSongId(songId);
             await ValidatePlaylistId(playlistId);
 
+            var songsInPlaylist = await playlistSongItemRepository.GetSongsByPlaylistId(playlistId);
+            foreach (var song in songsInPlaylist)
+            {
+                if (song.Id == songId)
+                {
+                    return;
+                }
+            }
+
             await playlistSongItemRepository.AddSongToPlaylist(songId, playlistId);
         }
 
