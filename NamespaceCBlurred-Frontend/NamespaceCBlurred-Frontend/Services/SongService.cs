@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NamespaceCBlurred_Frontend.Model;
-using NamespaceCBlurred_Frontend.Models;
+﻿using NamespaceCBlurred_Frontend.Model;
 using Newtonsoft.Json;
 
 namespace NamespaceCBlurred_Frontend.Services
