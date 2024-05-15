@@ -35,7 +35,7 @@ namespace NamespaceCBlurred_Frontend.Services
 
         public async Task<IEnumerable<Song>> GetAllSongsOfPlaylist(int playlistId)
         {
-            HttpResponseMessage response = await httpClient.GetAsync(apiBaseUrl + "SongsByPlaylist/" + playlistId);
+            HttpResponseMessage response = await httpClient.GetAsync(apiBaseUrl + "PlaylistSongItems/SongsByPlaylist/" + playlistId);
             if (!response.IsSuccessStatusCode)
             {
                 return new List<Song>();

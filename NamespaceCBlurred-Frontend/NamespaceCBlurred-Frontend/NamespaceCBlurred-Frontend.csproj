@@ -59,6 +59,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Raw\60_de_zile.mp3" />
+	  <None Remove="Resources\Raw\enzo.mp3" />
+	  <None Remove="Resources\Raw\fuel.mp3" />
 	  <None Remove="Resources\Raw\good-news.mp3" />
 	  <None Remove="Resources\Raw\highway-to-hell.mp3" />
 	</ItemGroup>

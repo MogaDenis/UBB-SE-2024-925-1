@@ -6,6 +6,7 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT;
 public partial class PlaySongsPage : ContentPage
 {
 	private readonly SongService songService;
+	private readonly PlaylistService playlistService;
 	private readonly AudioService audioService;
 
 	public PlaySongsPage()
@@ -13,6 +14,7 @@ public partial class PlaySongsPage : ContentPage
 		InitializeComponent();
 
 		songService = Service.GetInstance().SongService;
+		playlistService = Service.GetInstance().PlaylistService;
 		audioService = Service.GetInstance().AudioService;
     }
 
@@ -20,7 +22,16 @@ public partial class PlaySongsPage : ContentPage
 	{
 		base.OnAppearing();
 
-		SongsListView.ItemsSource = await songService.GetAllSongs();
+		int selectedPlaylistId = Service.GetInstance().SelectedPlaylistId;
+
+        if (selectedPlaylistId == -1)
+		{
+			SongsListView.ItemsSource = await songService.GetAllSongs();
+		}
+		else
+		{
+			SongsListView.ItemsSource = await playlistService.GetAllSongsOfPlaylist(selectedPlaylistId);
+		}
 	}
 
     private async void OnPlayClicked(object sender, EventArgs e)

@@ -49,7 +49,7 @@ namespace NamespaceCBlurred.Business.Services
             }
         }
 
-        public async Task AddSongToPlaylist(int songId, int playlistId)
+        public async Task AddSongToPlaylist(int playlistId, int songId)
         {
             await ValidateSongId(songId);
             await ValidatePlaylistId(playlistId);

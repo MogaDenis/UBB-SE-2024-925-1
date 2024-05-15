@@ -1,3 +1,5 @@
+using NamespaceCBlurred_Frontend.Services;
+
 namespace NamespaceCBlurred_Frontend.NamespaceGPT;
 
 public partial class RoutingPage : ContentPage
@@ -14,6 +16,8 @@ public partial class RoutingPage : ContentPage
 
 	private async void GoToPlaySongs(object sender, EventArgs e)
 	{
+		Service.GetInstance().SelectedPlaylistId = -1; // Show all songs
+
 		await Shell.Current.GoToAsync("PlaySongs");
 	}
 
