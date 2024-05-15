@@ -40,4 +40,10 @@ public partial class PlaySongsPage : ContentPage
 	{
 		audioService.StopAllSounds();
 	}
+
+	private async void GoFromSongsToRoutingPage(object sender, EventArgs e)
+	{
+        audioService.StopAllSounds();
+        await Shell.Current.GoToAsync("RoutingPage");
+    }
 }
