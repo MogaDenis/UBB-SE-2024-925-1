@@ -1,4 +1,5 @@
-﻿using NamespaceCBlurred_Frontend.Models;
+﻿using NamespaceCBlurred_Frontend.Model;
+using NamespaceCBlurred_Frontend.Models;
 using Plugin.Maui.Audio;
 
 namespace NamespaceCBlurred_Frontend.Services
@@ -46,6 +47,17 @@ namespace NamespaceCBlurred_Frontend.Services
                 player.Play();
                 AppAudioPlayers.Add(player);
             }
+        }
+
+        public void PlaySong(Song song)
+        {
+            StopAllSounds();
+
+            Stream track = FileSystem.OpenAppPackageFileAsync(song.UrlSong).Result;
+            IAudioPlayer player = AppAudioManager.CreatePlayer(track);
+
+            player.Play();
+            AppAudioPlayers.Add(player);
         }
     }
 }

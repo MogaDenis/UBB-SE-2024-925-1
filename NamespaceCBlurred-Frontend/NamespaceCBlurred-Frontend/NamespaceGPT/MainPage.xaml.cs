@@ -36,7 +36,7 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
         private async void GoFromMainToLogInPage(object sender, EventArgs e)
         {
             audioService.StopAllSounds();
-            await Shell.Current.GoToAsync("LogIn");
+            await Shell.Current.GoToAsync("RoutingPage");
         }
 
         private async void GoToLoadPage(object sender, EventArgs e)

@@ -14,7 +14,7 @@ namespace NamespaceCBlurred_Frontend
                 await DisplayAlert("Error", "Username and password are required!", "OK");
                 return;
             }
-            await Shell.Current.GoToAsync("Main");
+            await Shell.Current.GoToAsync("RoutingPage");
         }
 
         private async void OnForgotPasswordClicked(object sender, EventArgs e)

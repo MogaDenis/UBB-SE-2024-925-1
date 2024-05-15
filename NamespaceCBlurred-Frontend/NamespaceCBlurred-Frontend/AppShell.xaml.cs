@@ -15,6 +15,9 @@ namespace NamespaceCBlurred_Frontend
             Routing.RegisterRoute("Search", typeof(SearchPage));
             Routing.RegisterRoute("Save", typeof(SavePage));
             Routing.RegisterRoute("Load", typeof(LoadPage));
+            Routing.RegisterRoute("RoutingPage", typeof(RoutingPage));
+            Routing.RegisterRoute("PlaySongs", typeof(PlaySongsPage));
+            Routing.RegisterRoute("Playlists", typeof(PlaylistsPage));
         }
     }
 }
