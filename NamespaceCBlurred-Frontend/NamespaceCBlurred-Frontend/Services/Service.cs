@@ -13,6 +13,7 @@ namespace NamespaceCBlurred_Frontend.Services
         public AudioService AudioService { get; }
 
         public SoundType SelectedSoundType { get; set; }
+        public int SelectedPlaylistId { get; set; } = -1;
 
         private readonly string apiBaseUrl = "https://localhost:7155/api/";
         private static readonly Service Instance = new ();

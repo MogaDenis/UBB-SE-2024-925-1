@@ -25,6 +25,8 @@ public partial class PlaylistsPage : ContentPage
 
 	private async void OnSeePlaylistSongsClicked(object sender, EventArgs e)
 	{
+		Service.GetInstance().SelectedPlaylistId = (int)((Button)sender).CommandParameter;
+
         await Shell.Current.GoToAsync("PlaySongs");
     }
 }

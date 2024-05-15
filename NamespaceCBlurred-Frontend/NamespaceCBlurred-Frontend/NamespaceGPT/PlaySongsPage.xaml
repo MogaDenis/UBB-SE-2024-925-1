@@ -13,16 +13,28 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                                 <Button Text="Play"
                                         CommandParameter="{Binding Id}"
                                         Clicked="OnPlayClicked"
                                         HorizontalOptions="End"
-                                        Margin="0, 0, 50, 0"/>
-                                <Label Text="{Binding Name}" />
-                                <Label Text="{Binding Artist}" />
+                                        HeightRequest="0"
+                                        Margin="20, 0, 0, 0"/>
+                                <BoxView WidthRequest="0" HorizontalOptions="FillAndExpand" />
+                                <Label
+                                    FontSize="20"
+                                    HeightRequest="30"
+                                    >
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}{0} - {1}">
+                                            <Binding Path="Name" />
+                                            <Binding Path="Artist" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                                <BoxView WidthRequest="0" HorizontalOptions="FillAndExpand" />
                                 <Image Source="{Binding UrlImage}"
-                                       HeightRequest="200"
+                                       HeightRequest="100"
                                        Aspect="AspectFit"
                                        HorizontalOptions="CenterAndExpand"
                                        Margin="0,20,0,20"/>

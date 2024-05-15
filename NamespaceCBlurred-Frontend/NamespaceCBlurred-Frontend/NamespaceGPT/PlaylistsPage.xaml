@@ -9,12 +9,14 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" Padding="10">
-                                <Label Text="{Binding Name}" FontSize="40" Margin="10,10,0,10" />
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10">
+                                <Label Text="{Binding Name}" FontSize="20" Margin="10,10,0,10" HeightRequest="30"/>
+                                <BoxView WidthRequest="0" HorizontalOptions="FillAndExpand" />
                                 <Image Source="{Binding ImagePath}"
-                                       HeightRequest="200"
+                                       HeightRequest="100"
                                        Aspect="AspectFit"
                                        Margin="0,20,0,20"/>
+                                <BoxView WidthRequest="0" HorizontalOptions="FillAndExpand" />
                                 <Button Text="See Songs"
                                         CommandParameter="{Binding Id}"
                                         Clicked="OnSeePlaylistSongsClicked"
