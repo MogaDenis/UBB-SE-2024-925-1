@@ -2,17 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NamespaceCBlurred_Frontend.NamespaceGPT.RoutingPage"
-             Title="RoutingPage">
+             Title="NamespaceCBlurred App">
     <ScrollView>
         <StackLayout Padding="20" Spacing="20">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" Spacing="30">
 
                 <Button Text="Create song"
             Clicked="GoToCreateSong"
             BackgroundColor="#007AFF"
             TextColor="White"
             CornerRadius="10"
-            WidthRequest="200"
+            WidthRequest="300"
             HeightRequest="40"/>
 
                 <Button 
@@ -21,7 +21,7 @@
             BackgroundColor="#007AFF"
             TextColor="White"
             CornerRadius="10"
-            WidthRequest="200"
+            WidthRequest="300"
             HeightRequest="40"/>
 
                 <Button Text="See playlists"
@@ -29,10 +29,10 @@
             BackgroundColor="#007AFF"
             TextColor="White"
             CornerRadius="10"
-            WidthRequest="200"
+            WidthRequest="300"
             HeightRequest="40"/>
             </StackLayout>
-            
+
         </StackLayout>
     </ScrollView>
 </ContentPage>
