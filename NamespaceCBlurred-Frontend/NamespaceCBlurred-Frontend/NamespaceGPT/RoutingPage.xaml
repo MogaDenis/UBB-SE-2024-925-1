@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NamespaceCBlurred_Frontend.NamespaceGPT.RoutingPage"
+             Title="RoutingPage">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="10">
+
+                <Button Text="Create song"
+            Clicked="GoToCreateSong"
+            BackgroundColor="#007AFF"
+            TextColor="White"
+            CornerRadius="10"
+            WidthRequest="200"
+            HeightRequest="40"/>
+
+                <Button 
+            Text="Play songs"
+            Clicked="GoToPlaySongs"
+            BackgroundColor="#007AFF"
+            TextColor="White"
+            CornerRadius="10"
+            WidthRequest="200"
+            HeightRequest="40"/>
+
+                <Button Text="See playlists"
+            Clicked="GoToPlaylists"
+            BackgroundColor="#007AFF"
+            TextColor="White"
+            CornerRadius="10"
+            WidthRequest="200"
+            HeightRequest="40"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
