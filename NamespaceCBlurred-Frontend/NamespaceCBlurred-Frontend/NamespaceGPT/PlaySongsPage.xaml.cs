@@ -1,23 +1,27 @@
 using NamespaceCBlurred_Frontend.Model;
 using NamespaceCBlurred_Frontend.Services;
+using IServiceProvider = NamespaceCBlurred_Frontend.Services.Interfaces.IServiceProvider;
 
 namespace NamespaceCBlurred_Frontend.NamespaceGPT
 {
 	public partial class PlaySongsPage : ContentPage
 	{
+		private readonly IServiceProvider service;
 		private readonly SongService songService;
 		private readonly PlaylistService playlistService;
 		private readonly AudioService audioService;
 		private readonly int selectedPlaylistId = -1;
 
-		public PlaySongsPage()
+		public PlaySongsPage(IServiceProvider service)
 		{
 			InitializeComponent();
 
-			songService = Service.GetInstance().SongService;
-			playlistService = Service.GetInstance().PlaylistService;
-			audioService = Service.GetInstance().AudioService;
-			selectedPlaylistId = Service.GetInstance().SelectedPlaylistId;
+			this.service = service ?? throw new ArgumentNullException(nameof(service));
+
+			songService = this.service.GetSongService();
+			playlistService = this.service.GetPlaylistService();
+			audioService = this.service.GetAudioService();
+			selectedPlaylistId = this.service.GetSelectedPlaylistId();
 		}
 
 		protected override async void OnAppearing()
@@ -55,7 +59,9 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
 		private async void GoFromSongsToRoutingPage(object sender, EventArgs e)
 		{
 			audioService.StopAllSounds();
-			await Shell.Current.GoToAsync("RoutingPage");
-		}
+
+            RoutingPage routingPage = new (service);
+            await Shell.Current.Navigation.PushAsync(routingPage);
+        }
 	}
 }

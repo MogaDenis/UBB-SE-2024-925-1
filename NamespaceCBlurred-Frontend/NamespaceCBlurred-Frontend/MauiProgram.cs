@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using Plugin.Maui.Audio;
 
 namespace NamespaceCBlurred_Frontend
 {
