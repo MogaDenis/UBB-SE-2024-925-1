@@ -1,25 +1,29 @@
 using NamespaceCBlurred_Frontend.Models;
 using NamespaceCBlurred_Frontend.Services;
+using IServiceProvider = NamespaceCBlurred_Frontend.Services.Interfaces.IServiceProvider;
 
 namespace NamespaceCBlurred_Frontend.NamespaceGPT
 {
     public partial class SearchPage : ContentPage
     {
+        private readonly IServiceProvider service;
         private readonly SoundService soundService;
         private readonly CreationService creationService;
         private readonly AudioService audioService;
 
         private readonly SoundType selectedSoundType;
 
-        public SearchPage()
+        public SearchPage(IServiceProvider service)
         {
             InitializeComponent();
 
-            soundService = Service.GetInstance().SoundService;
-            creationService = Service.GetInstance().CreationService;
-            audioService = Service.GetInstance().AudioService;
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
 
-            selectedSoundType = Service.GetInstance().SelectedSoundType;
+            soundService = this.service.GetSoundService();
+            creationService = this.service.GetCreationService();
+            audioService = this.service.GetAudioService();
+
+            selectedSoundType = this.service.GetSelectedSoundType();
         }
 
         protected override async void OnAppearing()
@@ -39,7 +43,9 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
             await creationService.AddSoundToCreation(sound);
 
             audioService.StopAllSounds();
-            await Shell.Current.GoToAsync("Main");
+
+            MainPage mainPage = new (service);
+            await Shell.Current.Navigation.PushAsync(mainPage);
         }
 
         public async void OnPlayClicked(object sender, EventArgs e)
@@ -57,7 +63,9 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
         public async void GoFromSearchToMainPage(object sender, EventArgs e)
         {
             audioService.StopAllSounds();
-            await Shell.Current.GoToAsync("Main");
+
+            MainPage mainPage = new (service);
+            await Shell.Current.Navigation.PushAsync(mainPage);
         }
 
         private async void OnSearchButtonPressed(object sender, EventArgs e)

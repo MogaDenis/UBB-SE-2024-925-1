@@ -1,3 +1,6 @@
+using NamespaceCBlurred_Frontend.NamespaceGPT;
+using NamespaceCBlurred_Frontend.Services;
+
 namespace NamespaceCBlurred_Frontend
 {
     public partial class LogInPage : ContentPage
@@ -14,7 +17,9 @@ namespace NamespaceCBlurred_Frontend
                 await DisplayAlert("Error", "Username and password are required!", "OK");
                 return;
             }
-            await Shell.Current.GoToAsync("RoutingPage");
+
+            RoutingPage routingPage = new (Services.ServiceProvider.GetInstance());
+            await Shell.Current.Navigation.PushAsync(routingPage);
         }
 
         private async void OnForgotPasswordClicked(object sender, EventArgs e)

@@ -1,20 +1,24 @@
 ﻿using NamespaceCBlurred_Frontend.Models;
 using NamespaceCBlurred_Frontend.Services;
+using IServiceProvider = NamespaceCBlurred_Frontend.Services.Interfaces.IServiceProvider;
 
 namespace NamespaceCBlurred_Frontend.NamespaceGPT
 {
     public partial class MainPage : ContentPage
     {
+        private readonly IServiceProvider service;
         private readonly CreationService creationService;
         private readonly AudioService audioService;
         private bool isButtonClicked = false;
 
-        public MainPage()
+        public MainPage(IServiceProvider service)
         {
             InitializeComponent();
 
-            creationService = Service.GetInstance().CreationService;
-            audioService = Service.GetInstance().AudioService;
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
+
+            creationService = this.service.GetCreationService();
+            audioService = this.service.GetAudioService();
         }
 
         protected override async void OnAppearing()
@@ -36,13 +40,17 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
         private async void GoFromMainToLogInPage(object sender, EventArgs e)
         {
             audioService.StopAllSounds();
-            await Shell.Current.GoToAsync("RoutingPage");
+
+            RoutingPage routingPage = new (service);
+            await Shell.Current.Navigation.PushAsync(routingPage);
         }
 
         private async void GoToLoadPage(object sender, EventArgs e)
         {
             audioService.StopAllSounds();
-            await Shell.Current.GoToAsync("Load");
+
+            LoadPage loadPage = new (service);
+            await Shell.Current.Navigation.PushAsync(loadPage);
         }
 
         private void GoToListenTrack(object sender, EventArgs e)
@@ -61,10 +69,12 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
                 return;
             }
 
-            Service.GetInstance().SelectedSoundType = type;
+            service.SetSelectedSoundType(type);
 
             audioService.StopAllSounds();
-            await Shell.Current.GoToAsync("Search");
+
+            SearchPage searchPage = new (service);
+            await Shell.Current.Navigation.PushAsync(searchPage);
         }
 
         private async void GoFromMainToSavePage(object sender, EventArgs e)
@@ -74,7 +84,9 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
                 await DisplayAlert("Empty creation!", "Please select at least one track!", "OK");
                 return;
             }
-            await Shell.Current.GoToAsync("Save");
+
+            SavePage savePage = new (service);
+            await Shell.Current.Navigation.PushAsync(savePage);
         }
 
         private async void PlayCreation(object sender, EventArgs e)

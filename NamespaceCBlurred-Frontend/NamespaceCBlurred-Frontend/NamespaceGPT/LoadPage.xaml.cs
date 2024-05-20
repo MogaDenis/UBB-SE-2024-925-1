@@ -1,18 +1,22 @@
 using NamespaceCBlurred_Frontend.Models;
 using NamespaceCBlurred_Frontend.Services;
+using IServiceProvider = NamespaceCBlurred_Frontend.Services.Interfaces.IServiceProvider;
 
 namespace NamespaceCBlurred_Frontend.NamespaceGPT
 {
 	public partial class LoadPage : ContentPage
 	{
+        private readonly IServiceProvider service;
 		private readonly CreationService creationService;
 
-		public LoadPage()
-		{
-			InitializeComponent();
+        public LoadPage(IServiceProvider service)
+        {
+            InitializeComponent();
 
-			creationService = Service.GetInstance().CreationService;
-		}
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
+
+            creationService = this.service.GetCreationService();
+        }
 
         protected override async void OnAppearing()
         {
@@ -23,8 +27,9 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
 
         private async void GoToMainPage(object sender, EventArgs e)
 		{
-			await Shell.Current.GoToAsync("Main");
-		}
+            MainPage mainPage = new (service);
+            await Shell.Current.Navigation.PushAsync(mainPage);
+        }
 
         public async void OnCreationTapped(object sender, ItemTappedEventArgs e)
         {
@@ -35,7 +40,8 @@ namespace NamespaceCBlurred_Frontend.NamespaceGPT
 
             await creationService.LoadCreation(creation.Id);
 
-            await Shell.Current.GoToAsync("Main");
+            MainPage mainPage = new (service);
+            await Shell.Current.Navigation.PushAsync(mainPage);
         }
     }
 }
